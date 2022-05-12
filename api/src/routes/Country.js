@@ -13,7 +13,7 @@ const ApiToDb = async () => {
         id: c.cca3,
         name: c.name.common,
         flag: c.flags[0],
-        continent: c.region,
+        continent: c.continents[0],
         subregion: c.subregion,
         capital: c.capital ? c.capital[0] : "",
         population: c.population,
@@ -42,7 +42,7 @@ router.get("/", async (req, res) => {
     await ApiToDb();
   }
   if (name) {
-    const countryByName = await Country.findOne({
+    const countryByName = await Country.findAll({
       where: {
         name: {
           [Op.iLike]: `%${name}%`,
@@ -76,7 +76,7 @@ router.get("/:id", async (req, res) => {
       },
       include: {
         model: Activity,
-        attributes: ["name", "difficulty", "duration", "season"],
+        attributes: ["id","name", "difficulty", "duration", "season"],
         through: {
           attributes: [],
         },
