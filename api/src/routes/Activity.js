@@ -54,4 +54,20 @@ router.delete("/delete/:id", async (req, res) => {
   }
 })
 
+router.put("/modify/:id", async (req, res) => {
+  try {
+    const {id} = req.params;
+    const { name, difficulty, duration, season, country } = req.body;
+    await Activity.update({name, difficulty, duration, season, country}, {
+      where: {
+        id: id
+      }
+    })
+    res.status(200).send("Changed activity");
+  }
+  catch (error) {
+    console.log(error)
+  }
+})
+
 module.exports = router;

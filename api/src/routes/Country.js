@@ -56,7 +56,7 @@ router.get("/", async (req, res) => {
         },
       },
     });
-    if (countryByName) {
+    if (countryByName.length) {
       res.status(200).send(countryByName);
     } else {
       res.status(404).send("No se encontró el país");
@@ -69,24 +69,22 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
-  try {
-    const countryByID = await Country.findOne({
-      where: {
-        id: id,
+  const countryByID = await Country.findOne({
+    where: {
+      id: id,
+    },
+    include: {
+      model: Activity,
+      attributes: ["id", "name", "difficulty", "duration", "season"],
+      through: {
+        attributes: [],
       },
-      include: {
-        model: Activity,
-        attributes: ["id","name", "difficulty", "duration", "season"],
-        through: {
-          attributes: [],
-        },
-      },
-    });
+    },
+  });
 
-    res.status(200).send(countryByID);
-  } catch {
-    res.status(404).send("País no encontrado");
-  }
+  countryByID
+    ? res.status(200).send(countryByID)
+    : res.status(404).send("País no encontrado");
 });
 
 module.exports = router;

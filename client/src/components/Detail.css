@@ -1,0 +1,136 @@
+.detail-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 33%, rgba(255, 248, 0, 1) 100%, rgba(0, 212, 255, 1) 100%);
+}
+
+.detail-name {
+    color: white;
+    margin-left: 10px;
+}
+
+.detail-flag {
+    width: 500px;
+    height: 400px;
+    border-radius: 15px;
+}
+
+.detail-id {
+    color: white;
+    margin-left: 10px;
+}
+
+.detail-continent {
+    color: white;
+    margin-left: 10px;
+}
+
+.detail-capital {
+    color: white;
+    margin-left: 10px;
+}
+
+.detail-subregion {
+    color: white;
+    margin-left: 10px;
+}
+
+.detail-area {
+    color: white;
+    margin-left: 10px;
+}
+
+.detail-population {
+    color: white;
+    margin-left: 10px;
+}
+
+.detail-activityError {
+    color: white;
+    margin-left: 10px;
+}
+
+.detail-activity {
+    margin-top: -900px;
+    margin-left: 50%;
+    color: white;
+}
+
+.detail-backButton {
+    margin-left: 10px;
+    margin-top: 50px;
+    margin-right: 1800px;
+    background-color: yellow;
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.detail-backButton:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+
+.detail-activityError {
+    margin-left: -1px;
+}
+
+.detail-createActivity {
+    background-color: yellow;
+    border-radius: 20px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.detail-createActivity {
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+
+.inputName-change {
+    padding: 3px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 1080px;
+    margin: 0 auto;
+    box-sizing: content-box;
+}
+
+.inputDuration-change {
+    padding: 3px;
+
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 1080px;
+    margin: 0 auto;
+    box-sizing: content-box;
+}
+
+.inputDifficulty-change {
+    padding: 3px;
+
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 1080px;
+    margin: 0 auto;
+    box-sizing: content-box;
+}
+
+.inputSeason-change {
+    padding: 3px;
+
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 1080px;
+    margin: 0 auto;
+    box-sizing: content-box;
+}

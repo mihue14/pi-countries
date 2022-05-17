@@ -46,11 +46,11 @@ export const postActivity = (payload) => {
   };
 };
 
-export const deleteActivity = (payload) => {
+export const deleteActivity = (id, payload) => {
   return async function (dispatch) {
     try {
       let json = await axios.delete(
-        `http://localhost:3001/activities/delete/${payload}`
+        `http://localhost:3001/activities/delete/${id}`, payload
       );
       return json;
     } catch (error) {
@@ -59,15 +59,31 @@ export const deleteActivity = (payload) => {
   };
 };
 
+export const modifyActivity = (id, payload) => {
+  return async function (dispatch) {
+    try {
+      let json = await axios.put(`http://localhost:3001/activities/modify/${id}`, payload);
+      return json;
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 export const getCountryByName = (name) => {
   return async (dispatch) => {
-    let json = await axios.get(`http://localhost:3001/countries?name=${name}`);
-    if (json.data.length) {
+    try {
+      let json = await axios.get(
+        `http://localhost:3001/countries?name=${name}`
+      );
       return dispatch({
         type: GET_COUNTRY_BY_NAME,
         payload: json.data,
       });
-    } else alert("Country not found");
+    } catch {
+      alert("Country not found");
+    }
   };
 };
 

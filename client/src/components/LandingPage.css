@@ -1,2 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Square+Peg&display=swap');
+* {
+    font-family: 'Poppins', sans-serif;
+}
 
+.container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: black;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    color: white;
+}
+
+.info {
+    color: white;
+    margin-left: 825px;
+}
+
+.country {
+    margin-left: 760px;
+}
+
+.button-landing {
+    margin-left: 900px;
+    margin-top: 50px;
+    height: 80px;
+    width: 110px;
+    background-color: yellow;
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.button-landing:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+
+.detail-deleteButton {
+    background-color: yellow;
+    border-radius: 20px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.detail-deleteButton {
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
 

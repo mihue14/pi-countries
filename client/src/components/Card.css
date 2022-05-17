@@ -1,0 +1,13 @@
+.flag {
+    height: 20rem;
+    max-width: 25rem;
+}
+
+.name {
+    font-size: 1.5rem;
+    max-width: 25rem;
+}
+
+.continent {
+    max-width: 35rem;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCountryByName } from "../redux/actions";
+import "./SearchBar.css"
 
 const SearchBar = ({ paged }) => {
   const dispatch = useDispatch();
@@ -27,16 +28,16 @@ const SearchBar = ({ paged }) => {
     <div>
       <form>
         <input
+          className="input-search"
           type="text"
           placeholder="Search..."
           onChange={(e) => handleInputChange(e)}
-          className="input"
           value={name}
         />
         <button
           type="submit"
           onClick={(e) => handleSubmit(e)}
-          className="button"
+          className="button-search"
         >
           🔎
         </button>

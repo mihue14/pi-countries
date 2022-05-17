@@ -1,0 +1,23 @@
+.input-search {
+    border-radius: 0.938rem;
+    width: 15.625rem;
+    height: 2.1rem;
+    font-size: 0.938rem;
+}
+
+.button-search {
+    padding: 0.438rem 1.125rem;
+    font-size: 0.938rem;
+    border-radius: 0.938rem;
+    background-color: yellow;
+    transition: 0.5s;
+    transform: scale(1.05);
+    cursor: pointer;
+    border-color: black;
+}
+.button-search:hover { 
+    background-color: black;
+    color: yellow;
+    transition: 0.5s;
+    transform: scale(1.05);
+}

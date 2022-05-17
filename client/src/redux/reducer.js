@@ -6,6 +6,7 @@ import {
   GET_ALL_COUNTRIES,
   GET_COUNTRY_BY_ID,
   GET_COUNTRY_BY_NAME,
+  MODIFY_ACTIVITY,
   ORDER_BY_AZ,
   ORDER_BY_POPULATION,
   POST_ACTIVITY,
@@ -35,6 +36,9 @@ function rootReducer(state = initialState, action) {
 
     case DELETE_ACTIVITY:
       return { ...state, countries: action.payload };
+
+    case MODIFY_ACTIVITY:
+      return { ...state, activities: action.payload };
 
     case GET_COUNTRY_BY_NAME:
       return { ...state, countries: action.payload };

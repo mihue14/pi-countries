@@ -6,6 +6,7 @@ import { getCountries, postActivity } from "../redux/actions";
 const validate = (input) => {
   let error = {};
   const nameVal = new RegExp(/^([a-zA-Z]|[^0-9]\S)([^0-9]*){1,}$/);
+  console.log(input.name);
   if (!input.name) {
     error.name = "name required";
   } else if (!nameVal.test(input.name)) {
@@ -24,6 +25,7 @@ const validate = (input) => {
 };
 
 const ActivityCreate = () => {
+  const nameVal = new RegExp(/^([a-zA-Z]|[^0-9]\S)([^0-9]*){1,}$/);
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState({});
@@ -49,7 +51,7 @@ const ActivityCreate = () => {
     setErrors(
       validate({
         ...input,
-        [e.target.value]: e.target.value,
+        [e.target.name]: e.target.value,
       })
     );
   };
@@ -72,6 +74,13 @@ const ActivityCreate = () => {
 
   const handleSumbit = (e) => {
     e.preventDefault();
+    if (!input.name) return alert("Entry a name please...");
+    if (!nameVal.test(input.name)) return alert("The name can only contain letters...");
+    if (!input.difficulty) return alert("Entry a difficulty please...");
+    if (input.difficulty < 1 || input.difficulty > 5) return alert("Enter a difficulty from 1 to 5 please...")
+    if (!input.duration) return alert("Entry a duration please...");
+    if (input.duration < 1 ) return alert("Enter a duration greater than 1 please...")
+    if (!input.season) return alert("Entry a season please...");
     if (!input.country.length) return alert("Select a country please...");
     else {
       let aux = input.name.toLowerCase();
@@ -95,7 +104,9 @@ const ActivityCreate = () => {
       history.push("/home");
     }
   };
-{console.log(input)}
+  {
+    console.log(input);
+  }
 
   return (
     <div>
@@ -110,15 +121,22 @@ const ActivityCreate = () => {
             name="name"
             onChange={handleChange}
           />
+          {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+          {errors.nameValidate && (
+            <p style={{ color: "red" }}>{errors.nameValidate}</p>
+          )}
         </div>
         <div>
-          <label>Difficulty: </label>
+          <label>Difficulty (1-5): </label>
           <input
             type="number"
             value={input.difficulty}
             name="difficulty"
             onChange={handleChange}
           />
+          {
+            errors.difficulty && <p style={{color:"red"}}>{errors.difficulty}</p>
+          }
         </div>
         <div>
           <label>Duration: </label>
@@ -128,16 +146,25 @@ const ActivityCreate = () => {
             name="duration"
             onChange={handleChange}
           />
+          <span> minutes</span>
+          {
+            errors.duration && <p style={{color:"red"}}>{errors.duration}</p>
+          }
         </div>
         <div>
           <label>Season: </label>
           <select name="season" onChange={handleChange}>
-              <option disabled selected>Select a season</option>
-              <option value="Spring">Spring</option>
-              <option value="Summer">Summer</option>
-              <option value="Autumn">Autumn</option>
-              <option value="Winter">Winter</option>
+            <option disabled selected>
+              Select a season
+            </option>
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Autumn">Autumn</option>
+            <option value="Winter">Winter</option>
           </select>
+          {
+            errors.season && <p style={{color:"red"}}>{errors.season}</p>
+          }
         </div>
         <div>
           <label>Country: </label>
@@ -159,13 +186,16 @@ const ActivityCreate = () => {
               );
             })}
           </ul>
+          {
+            errors.country && <p style={{color:"red"}}>{errors.country}</p>
+          }
         </div>
         <div>
           <button>Create 🌍</button>
         </div>
       </form>
       <div>
-          <button onClick={() => history.push("/home")}>Back</button>
+        <button onClick={() => history.push("/home")}>Back</button>
       </div>
     </div>
   );

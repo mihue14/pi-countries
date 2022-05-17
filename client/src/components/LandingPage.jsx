@@ -4,13 +4,18 @@ import "./LandingPage.css";
 
 const LandingPage = () => {
   return (
-      <div className="container-landing">
-        <h1>Countries APP</h1>
-        <h3>all about countries!</h3>
+    <div className="container">
+      <h1 className="welcome">Countries APP</h1>
+      <h3 className="info">all information about countries!</h3>
+      <div>
+        <div>
+          <img className="country" src="https://cdn.picpng.com/flags/countries-country-flags-globe-58974.png" alt="" style={{height:"400px"}}/>
+        </div>
         <Link to="/home">
-          <button>Let´s Go!</button>
+          <button className="button-landing">Let´s Go!</button>
         </Link>
       </div>
+    </div>
   );
 };
 
