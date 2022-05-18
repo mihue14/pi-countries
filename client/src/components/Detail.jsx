@@ -68,7 +68,7 @@ const Details = (props) => {
                       <input
                         type="text"
                         placeholder="Enter a new name..."
-                        
+                        style={{borderRadius:"5px"}}
                         onChange={(e) => setInput({ name: e.target.value })}
                       />
                       <button
@@ -89,7 +89,8 @@ const Details = (props) => {
                             window.location.reload();
                           }
                         }}
-                      >
+                        style={{backgroundColor:"yellow", borderRadius:"10px", cursor:"pointer"}}
+                        >
                         Change
                       </button>
                       </div>
@@ -101,6 +102,7 @@ const Details = (props) => {
                     <div style={{marginRight:"300px"}}>
                       <input
                         type="text"
+                        style={{borderRadius:"5px"}}
                         placeholder="Enter a new duartion..."
                         onChange={(e) => setInput({ duration: e.target.value })}
                       />
@@ -124,7 +126,8 @@ const Details = (props) => {
                             window.location.reload();
                           }
                         }}
-                      >
+                        style={{backgroundColor:"yellow", borderRadius:"10px", cursor:"pointer"}}
+                        >
                         Change
                       </button>
                     </div>
@@ -135,6 +138,7 @@ const Details = (props) => {
                   {
                     <div style={{marginRight:"300px"}}>
                       <input
+                        style={{borderRadius:"5px"}}
                         type="text"
                         placeholder="Enter a new difficulty..."
                         onChange={(e) =>
@@ -163,6 +167,7 @@ const Details = (props) => {
                             window.location.reload();
                           }
                         }}
+                        style={{backgroundColor:"yellow", borderRadius:"10px", cursor:"pointer"}}
                       >
                         Change
                       </button>
@@ -179,7 +184,7 @@ const Details = (props) => {
                           season: e.target.value,
                         });
                       }}
-                      style={{width:"182px"}}
+                      style={{width:"182px",borderRadius:"5px"}}
                     >
                       <option value="" disabled selected>
                         Enter a new season
@@ -195,6 +200,7 @@ const Details = (props) => {
                       alert("Season changed")
                       window.location.reload();
                     }}
+                    style={{backgroundColor:"yellow", borderRadius:"10px", cursor:"pointer"}}
                     >Change</button>
                     </div>
                   }
@@ -213,7 +219,7 @@ const Details = (props) => {
                     }
                   }}
                   className="detail-deleteButton"
-                  style={{marginLeft:"5px", margin:"10px"}}
+                  style={{marginLeft:"5px", margin:"10px",borderRadius:"5px"}}
                 >
                   delete activity
                 </button>

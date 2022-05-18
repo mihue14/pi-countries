@@ -1,0 +1,32 @@
+.root-paged {
+    display: inline-block;
+    margin-left: 360px;
+    margin-bottom: 10px;
+    text-align: center !important;
+}
+
+.page {
+    margin: 0.1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 0.938rem;
+    padding: 0.219rem 0.562rem;
+    background-color: yellow;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-color: black;
+
+}
+
+.current-page {
+    margin: 0.1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 0.938rem;
+    padding: 0.219rem 0.562rem;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-color: black;
+}

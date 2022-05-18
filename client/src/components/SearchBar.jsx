@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getCountryByName } from "../redux/actions";
 import "./SearchBar.css"
 
-const SearchBar = ({ paged }) => {
+const SearchBar = ({ paged, waite }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
@@ -30,7 +30,7 @@ const SearchBar = ({ paged }) => {
         <input
           className="input-search"
           type="text"
-          placeholder="Search..."
+          placeholder="Search country..."
           onChange={(e) => handleInputChange(e)}
           value={name}
         />

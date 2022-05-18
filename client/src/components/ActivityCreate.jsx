@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getCountries, postActivity } from "../redux/actions";
+import "./ActivityCreate.css";
 
 const validate = (input) => {
   let error = {};
@@ -109,11 +110,11 @@ const ActivityCreate = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={(e) => handleSumbit(e)}>
-        <h1>Create Activity</h1>
+    <div className="container-create">
+      <form onSubmit={(e) => handleSumbit(e)} className="form-create">
+        <h1 className="h1-create">Create Activity</h1>
 
-        <div>
+        <div className="name-create">
           <label>Name: </label>
           <input
             type="text"
@@ -126,7 +127,7 @@ const ActivityCreate = () => {
             <p style={{ color: "red" }}>{errors.nameValidate}</p>
           )}
         </div>
-        <div>
+        <div className='difficulty-create'>
           <label>Difficulty (1-5): </label>
           <input
             type="number"
@@ -138,7 +139,7 @@ const ActivityCreate = () => {
             errors.difficulty && <p style={{color:"red"}}>{errors.difficulty}</p>
           }
         </div>
-        <div>
+        <div className='duration-create'>
           <label>Duration: </label>
           <input
             type="number"
@@ -151,9 +152,9 @@ const ActivityCreate = () => {
             errors.duration && <p style={{color:"red"}}>{errors.duration}</p>
           }
         </div>
-        <div>
+        <div className='season-create'>
           <label>Season: </label>
-          <select name="season" onChange={handleChange}>
+          <select name="season" onChange={handleChange} style={{width:"182px"}}>
             <option disabled selected>
               Select a season
             </option>
@@ -166,9 +167,9 @@ const ActivityCreate = () => {
             errors.season && <p style={{color:"red"}}>{errors.season}</p>
           }
         </div>
-        <div>
+        <div className="country-create">
           <label>Country: </label>
-          <select onChange={(e) => handleSelect(e)}>
+          <select onChange={(e) => handleSelect(e)} style={{width:"182px"}}>
             <option disabled selected>
               Select a country
             </option>
@@ -179,9 +180,9 @@ const ActivityCreate = () => {
           <ul>
             {input.country.map((el) => {
               return (
-                <div key={el}>
+                <div key={el} style={{marginLeft:"-40px"}}>
                   {el}
-                  <button onClick={() => handleDelete(el)}>x</button>
+                  <button onClick={() => handleDelete(el)} className="button-delete-country">x</button>
                 </div>
               );
             })}
@@ -190,13 +191,11 @@ const ActivityCreate = () => {
             errors.country && <p style={{color:"red"}}>{errors.country}</p>
           }
         </div>
-        <div>
-          <button>Create 🌍</button>
+        <div className="buttons-create">
+          <button onClick={() => history.push("/home")} style={{marginLeft:"55px"}} className="back-create">Back</button>
+          <button style={{marginRight:"55px"}} className="button-create">Create 🌍</button>
         </div>
       </form>
-      <div>
-        <button onClick={() => history.push("/home")}>Back</button>
-      </div>
     </div>
   );
 };

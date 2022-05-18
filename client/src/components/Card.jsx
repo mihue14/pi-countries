@@ -10,12 +10,6 @@ const Card = ({ flag, name, continent, id }) => {
           className="flag"
           src={flag}
           alt="flag"
-          style={{
-            minHeight: "200px",
-            maxHeight: "200px",
-            minWidth: "300px",
-            maxWidth: "300px",
-          }}
         />
       </Link>
       <h3 className="name">{name}</h3>

@@ -1,0 +1,141 @@
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 4.375rem;
+    background-color: black;
+}
+
+.buttonCreate {
+    border-radius: 0.938rem;
+    font-size: 0.938rem;
+    padding: 0.438rem 1.125rem;
+    background-color: yellow;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-color: black;}
+.buttonCreate:hover {
+    background-color: black;
+    color: yellow;
+    transition:  all 0.5s;
+    transform: scale(1.05);
+}
+
+.root-filters {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 4.375rem;
+}
+
+.refreshDog {
+    margin-left: -20rem;
+    border-radius: 0.938rem;
+    font-size: 0.938rem;
+    padding: 0.1rem 0.6rem;
+    background-color: yellow;
+    cursor: pointer;
+    transition: all 0.5s;
+    box-shadow: 0.1rem 0.2rem;
+    border-color: black;
+}
+.refreshDog:hover {
+    background-color: black;
+    color: yellow;
+    transition: all 0.5s;
+    transform: scale(1.05);
+    box-shadow: 0 0;
+}
+
+.filterContinent {
+    margin: 0.5rem;
+    margin-left: -7rem;
+    border-radius: 0.938rem;
+    font-size: 0.938rem;
+    padding: 0.1rem 0.6rem;
+    background-color: yellow;
+    cursor: pointer;
+    transition: all 0.5s;
+    box-shadow: 0.1rem 0.2rem;
+    border-color: black;
+}
+.filterContinent:hover {
+    background-color: black;
+    color: yellow;
+    transition: all 0.5s;
+    transform: scale(1.05);
+    box-shadow: 0 0;
+}
+
+.filterActivity {
+    margin: 0.5rem;
+    border-radius: 0.938rem;
+    font-size: 0.938rem;
+    padding: 0.1rem 0.6rem;
+    background-color: yellow;
+    cursor: pointer;
+    transition: all 0.5s;
+    box-shadow: 0.1rem 0.2rem;
+    border-color: black;
+}
+.filterActivity:hover {
+    background-color: black;
+    color: yellow;
+    transition: all 0.5s;
+    transform: scale(1.05);
+    box-shadow: 0 0;
+}
+
+.orderName {
+    margin: 0.5rem;
+    border-radius: 0.938rem;
+    font-size: 0.938rem;
+    padding: 0.1rem 0.6rem;
+    background-color: yellow;
+    cursor: pointer;
+    transition: all 0.5s;
+    box-shadow: 0.1rem 0.2rem;
+    border-color: black;
+}
+.orderName:hover {
+    background-color: black;
+    color: yellow;
+    transition: all 0.5s;
+    transform: scale(1.05);
+    box-shadow: 0 0;
+}
+
+.orderPopulation {
+    margin: 0.5rem;
+    border-radius: 0.938rem;
+    font-size: 0.938rem;
+    padding: 0.1rem 0.6rem;
+    background-color: yellow;
+    cursor: pointer;
+    transition: all 0.5s;
+    box-shadow: 0.1rem 0.2rem;
+    border-color: black;
+}
+.orderPopulation:hover {
+    background-color: black;
+    color: yellow;
+    transition: all 0.5s;
+    transform: scale(1.05);
+    box-shadow: 0 0;
+}
+
+.card {
+    display: inline-flex;
+    margin-right: auto;
+    margin-left: 4rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    height: 360px;
+    border-radius: 15px;
+    background-color: rgb(235, 249, 85);
+    transition: all 1s;
+}
+.card:hover {
+    transition: all 0.5s;
+    transform: scale(1.1);
+}

@@ -1,0 +1,107 @@
+.container-create {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: url("https://cdn.wallpapersafari.com/9/32/YF5sBZ.jpg");
+    background-size: cover;
+}
+
+.button-create {
+    background-color: black;
+    margin-left: 0px;
+    padding: 20px;
+}
+
+.form-create {
+    background: linear-gradient(90deg, rgba(255,248,0,1) 36%, rgba(255,255,255,1) 100%, rgba(0,212,255,1) 100%);
+    margin-left: 700px;
+    margin-top: 200px;
+    margin-right: 840px;
+    border-radius: 20px;
+}
+
+.h1-create {
+    margin-left: 70px;
+}
+
+.name-create {
+    padding-bottom: 10px;
+    padding-left: 66px;
+}
+
+.difficulty-create {
+    padding-bottom: 10px;
+}
+
+.duration-create {
+    padding-left: 45px;
+    padding-bottom: 10px;
+}
+
+.season-create {
+    margin-left: 55px;
+    padding-bottom: 10px;
+}
+
+.country-create {
+    padding-left: 50px;
+}
+
+.button-delete-country {
+    background-color: red;
+    margin-left: 10px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.button-delete-country:hover {
+    background-color: white;
+    color: red;
+    transition: all 0.5s;
+}
+
+
+.button-create {
+    height: 50px;
+    width: 120px;
+    cursor: pointer;
+    background-color: black;
+    color: yellow;
+    border-radius: 15px;
+    border: none;
+    transition: all 0.5s;
+}
+.button-create:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.5s;
+    transform: scale(1.1);
+}
+
+
+
+.back-create {
+    cursor: pointer;
+    height: 50px;
+    width: 120px;
+    background-color: black;
+    color: yellow;
+    border-radius: 15px;
+    border: none;
+    transition: all 0.5s;
+}
+.back-create:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.5s;
+    transform: scale(1.1);
+}
+
+.buttons-create {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
