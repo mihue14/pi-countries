@@ -7,6 +7,12 @@ const { Country, conn } = require('../../src/db.js');
 const agent = session(app);
 const country = {
   name: 'Argentina',
+  id: 'ARG',
+  continent: 'America',
+  flag: 'Flag',
+  capital: 'Buenos Aires',
+  subregion: 'América del Sur',
+  area: 2002,
 };
 
 describe('Country routes', () => {
@@ -15,7 +21,7 @@ describe('Country routes', () => {
     console.error('Unable to connect to the database:', err);
   }));
   beforeEach(() => Country.sync({ force: true })
-    .then(() => Country.create(pokemon)));
+    .then(() => Country.create(country)));
   describe('GET /countries', () => {
     it('should get 200', () =>
       agent.get('/countries').expect(200)
