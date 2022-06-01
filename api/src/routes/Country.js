@@ -67,9 +67,8 @@ router.get("/", async (req, res) => {
     res.send(
       "No habían paises cargados en la DataBase, intente de nuevo por favor."
     );
-    res.end()
   }
-  if (name) {
+  else if (name) {
     const countryByName = await Country.findAll({
       where: {
         name: {
