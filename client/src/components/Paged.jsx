@@ -11,7 +11,7 @@ const Paged = ({ countriesPerPage, setCountriesPerPage, allCountries, paged, cur
   let lastPage = pageNumbers.length
 
   return (
-    <div>
+    <div className="container-paged">
       <nav className="root-paged">
         <ul>
           <button onClick={currentPage > 1 ? () => {paged(1); waitePaged()} : null} className="page">{"<<"}</button>

@@ -133,7 +133,10 @@ const ActivityCreate = () => {
             type="number"
             value={input.difficulty}
             name="difficulty"
+            min="1"
+            max="5"
             onChange={handleChange}
+            style={{width:"174px"}}
           />
           {
             errors.difficulty && <p style={{color:"red"}}>{errors.difficulty}</p>
@@ -145,6 +148,7 @@ const ActivityCreate = () => {
             type="number"
             value={input.duration}
             name="duration"
+            min="1"
             onChange={handleChange}
           />
           <span> minutes</span>

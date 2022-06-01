@@ -1,5 +1,6 @@
 import {
   DELETE_ACTIVITY,
+  DELETE_COUNTRY_DETAIL,
   FILTER_BY_ACTIVITY,
   FILTER_BY_CONTINENT,
   GET_ALL_ACTIVITIES,
@@ -45,6 +46,9 @@ function rootReducer(state = initialState, action) {
 
     case GET_COUNTRY_BY_ID:
       return { ...state, detail: action.payload };
+
+    case DELETE_COUNTRY_DETAIL:
+      return { ...state, detail: [] };
 
     case FILTER_BY_CONTINENT:
       const allcountries = state.allCountries;

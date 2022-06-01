@@ -104,7 +104,7 @@ const Home = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 300);
+    }, 350);
   };
 
   return (

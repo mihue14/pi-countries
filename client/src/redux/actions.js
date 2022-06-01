@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  DELETE_COUNTRY_DETAIL,
   FILTER_BY_ACTIVITY,
   FILTER_BY_CONTINENT,
   GET_ALL_ACTIVITIES,
@@ -11,19 +12,28 @@ import {
 } from "./actions-types";
 
 export const getCountries = () => {
-  return async (dispatch) => {
-    let json = await axios.get("http://localhost:3001/countries");
+  return (dispatch) => {
+    axios.get("/countries").then(e => {
+      return dispatch({
+        type: GET_ALL_COUNTRIES,
+        payload: e.data
+      })
+    })
+  }
 
-    return dispatch({
-      type: GET_ALL_COUNTRIES,
-      payload: json.data,
-    });
-  };
+  // return async (dispatch) => {
+  //   let json = await axios.get("http://localhost:3001/countries");
+
+  //   return dispatch({
+  //     type: GET_ALL_COUNTRIES,
+  //     payload: json.data,
+  //   });
+  // };
 };
 
 export const getActivities = () => {
   return async (dispatch) => {
-    let json = await axios.get("http://localhost:3001/activities");
+    let json = await axios.get("/activities");
 
     return dispatch({
       type: GET_ALL_ACTIVITIES,
@@ -36,7 +46,7 @@ export const postActivity = (payload) => {
   return async function (dispatch) {
     try {
       let json = await axios.post(
-        "http://localhost:3001/activities/create",
+        "/activities/create",
         payload
       );
       return json;
@@ -50,7 +60,7 @@ export const deleteActivity = (id, payload) => {
   return async function (dispatch) {
     try {
       let json = await axios.delete(
-        `http://localhost:3001/activities/delete/${id}`, payload
+        `/activities/delete/${id}`, payload
       );
       return json;
     } catch (error) {
@@ -62,7 +72,7 @@ export const deleteActivity = (id, payload) => {
 export const modifyActivity = (id, payload) => {
   return async function (dispatch) {
     try {
-      let json = await axios.put(`http://localhost:3001/activities/modify/${id}`, payload);
+      let json = await axios.put(`/activities/modify/${id}`, payload);
       return json;
     }
     catch (error) {
@@ -75,7 +85,7 @@ export const getCountryByName = (name) => {
   return async (dispatch) => {
     try {
       let json = await axios.get(
-        `http://localhost:3001/countries?name=${name}`
+        `/countries?name=${name}`
       );
       return dispatch({
         type: GET_COUNTRY_BY_NAME,
@@ -89,13 +99,20 @@ export const getCountryByName = (name) => {
 
 export const getCountryByID = (id) => {
   return async (dispatch) => {
-    let json = await axios.get(`http://localhost:3001/countries/${id}`);
+    let json = await axios.get(`/countries/${id}`);
     return dispatch({
       type: GET_COUNTRY_BY_ID,
       payload: json.data,
     });
   };
 };
+
+export const deleteCountryDetail = (payload) => {
+  return {
+    type: DELETE_COUNTRY_DETAIL,
+    payload
+  }
+}
 
 export const filterByContinent = (payload) => {
   return {

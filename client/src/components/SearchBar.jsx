@@ -14,6 +14,7 @@ const SearchBar = ({ paged, waite }) => {
 
   const handleSubmit = (e) => {
     if (name) {
+      waite()
       e.preventDefault();
       dispatch(getCountryByName(name));
       paged(1);
