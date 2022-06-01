@@ -5,10 +5,11 @@ const { Op } = require("sequelize");
 
 const router = Router();
 
-const ApiToDb = async () => {
-  try {
-    const api = await axios.get("https://restcountries.com/v3/all");
-    const data = api.data.map((c) => {
+const ApiToDb = () => {
+  const api = axios.get("https://restcountries.com/v3/all");
+
+  const promise = api.then((res) => {
+    return res.data.map((c) => {
       return {
         id: c.cca3,
         name: c.name.common,
@@ -18,13 +19,36 @@ const ApiToDb = async () => {
         capital: c.capital ? c.capital[0] : "",
         population: c.population,
         area: c.area,
+        translations: c.translations.jpn ? c.translations.jpn.official : ""
       };
     });
-    await Country.bulkCreate(data);
-  } catch (error) {
-    console.log(error);
-  }
+  });
+
+  promise
+    .then((data) => Country.bulkCreate(data))
+    .catch((error) => console.log(error));
 };
+
+// const ApiToDb = async () => {
+//   try {
+//     const api = await axios.get("https://restcountries.com/v3/all");
+//     const data = api.data.map((c) => {
+//       return {
+//         id: c.cca3,
+//         name: c.name.common,
+//         flag: c.flags[0],
+//         continent: c.continents[0],
+//         subregion: c.subregion,
+//         capital: c.capital ? c.capital[0] : "",
+//         population: c.population,
+//         area: c.area,
+//       };
+//     });
+//     await Country.bulkCreate(data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 router.get("/", async (req, res) => {
   const { name } = req.query;
@@ -39,7 +63,10 @@ router.get("/", async (req, res) => {
     },
   });
   if (!COUNTRYDB.length) {
-    await ApiToDb();
+    ApiToDb();
+    res.send(
+      "No habían paises cargados en la DataBase, intente de nuevo por favor."
+    );
   }
   if (name) {
     const countryByName = await Country.findAll({
@@ -66,25 +93,46 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", (req, res) => {
   const { id } = req.params;
 
-  const countryByID = await Country.findOne({
-    where: {
-      id: id,
-    },
-    include: {
-      model: Activity,
-      attributes: ["id", "name", "difficulty", "duration", "season"],
-      through: {
-        attributes: [],
+  return new Promise((resolve, reject) => {
+    const countryByID = Country.findOne({
+      where: {
+        id: id,
       },
-    },
-  });
+      include: {
+        model: Activity,
+        attributes: ["id", "name", "difficulty", "duration", "season"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
 
-  countryByID
-    ? res.status(200).send(countryByID)
-    : res.status(404).send("País no encontrado");
+    resolve(countryByID)
+  }).then((data) => res.send(data))
 });
+
+// router.get("/:id", async (req, res) => {
+//   const { id } = req.params;
+
+//   const countryByID = await Country.findOne({
+//     where: {
+//       id: id,
+//     },
+//     include: {
+//       model: Activity,
+//       attributes: ["id", "name", "difficulty", "duration", "season"],
+//       through: {
+//         attributes: [],
+//       },
+//     },
+//   });
+
+//   countryByID
+//     ? res.status(200).send(countryByID)
+//     : res.status(404).send("País no encontrado");
+// });
 
 module.exports = router;

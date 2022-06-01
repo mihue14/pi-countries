@@ -2,15 +2,25 @@ const { Router } = require("express");
 const { Country, Activity } = require("../db");
 const router = Router();
 
+// router.get("/", async (req, res) => {
+//   const activityDB = await Activity.findAll();
+//   if (activityDB) {
+//     res.status(200).send(activityDB);
+//   } else {
+//     res.status(404).send("No activities created")
+//   }
+// })
 
-router.get("/", async (req, res) => {
-  const activityDB = await Activity.findAll();
-  if (activityDB) {
-    res.status(200).send(activityDB);
-  } else {
-    res.status(404).send("No activities created")
-  }
-})
+router.get("/", (req, res) => {
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(Activity.findAll());
+    }, 50);
+  });
+  promise
+    .then((data) => res.status(200).send(data))
+    .catch((error) => console.log(error));
+});
 
 router.post("/create", async (req, res) => {
   try {
@@ -23,7 +33,6 @@ router.post("/create", async (req, res) => {
       season,
     });
 
-
     const countryDB = await Country.findAll({
       where: {
         name: country,
@@ -33,41 +42,42 @@ router.post("/create", async (req, res) => {
     await postActivity.addCountry(countryDB);
 
     res.status(200).send("Actividad creada con éxito");
-  } catch (error){
+  } catch (error) {
     res.status(404).send(error);
   }
 });
 
 router.delete("/delete/:id", async (req, res) => {
-  const {id} = req.params
+  const { id } = req.params;
 
   try {
     await Activity.destroy({
       where: {
-        id: id
-      }
+        id: id,
+      },
     });
     res.status(200).send("Activity deleted");
-  }
-  catch (error){
+  } catch (error) {
     res.status(404).send(error);
   }
-})
+});
 
 router.put("/modify/:id", async (req, res) => {
   try {
-    const {id} = req.params;
+    const { id } = req.params;
     const { name, difficulty, duration, season, country } = req.body;
-    await Activity.update({name, difficulty, duration, season, country}, {
-      where: {
-        id: id
+    await Activity.update(
+      { name, difficulty, duration, season, country },
+      {
+        where: {
+          id: id,
+        },
       }
-    })
+    );
     res.status(200).send("Changed activity");
+  } catch (error) {
+    console.log(error);
   }
-  catch (error) {
-    console.log(error)
-  }
-})
+});
 
 module.exports = router;
